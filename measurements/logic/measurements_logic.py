@@ -18,6 +18,8 @@ def create_measurement(meas):
 
 def update_measurement(meas_pk, new_meas):
     measurement = get_measurement(meas_pk)
+    variable_pk = Variable.objects.get(pk=meas["variable"])
+    measurement.variable = variable_pk
     measurement.value = new_meas["value"]
     measurement.unit = new_meas["unit"]
     measurement.place = new_meas["place"]
